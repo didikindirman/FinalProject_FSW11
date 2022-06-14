@@ -1,0 +1,34 @@
+{
+  "name": "finpro-binar-backend",
+  "version": "1.0.0",
+  "description": "finpro-binar-backend",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com/fullstack-web-11-binar-km-2/kelompok-2/backend.git"
+  },
+  "keywords": [
+    "backend",
+    "secondhand"
+  ],
+  "author": "kelompok 2",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://gitlab.com/fullstack-web-11-binar-km-2/kelompok-2/backend/issues"
+  },
+  "homepage": "https://gitlab.com/fullstack-web-11-binar-km-2/kelompok-2/backend#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "express-formidable": "^1.2.0",
+    "jsonwebtoken": "^8.5.1",
+    "nodemon": "^2.0.16",
+    "sequelize": "^6.20.1",
+    "sequelize-cli": "^6.4.1"
+  }
+}

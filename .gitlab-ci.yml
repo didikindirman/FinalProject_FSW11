@@ -5,7 +5,7 @@ Deploy to Heroku:
   stage: deploy
   image: ruby:latest
   tags:
-    - shared-bor
+    - deploy
   script:
   - gem install dpl
   - dpl --provider=heroku --app=$HEROKU_APP_PRODUCTION --api-key=$HEROKU_API_KEY
