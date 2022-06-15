@@ -1,8 +1,8 @@
 {
   "development": {
-    "username": "bhara",
-    "password": "bharbhar",
-    "database": "ecommers_fp",
+    "username": "didk",
+    "password": "Didik123",
+    "database": "coba2",
     "host": "127.0.0.1",
     "dialect": "postgresql"
   },

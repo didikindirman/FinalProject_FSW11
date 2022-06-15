@@ -5,7 +5,5 @@ exports.generateToken = async (payload) => {
 };
 
 exports.decodeToken = async (token) => {
-    const decodedToken = await jwt.decode(token);
-
-    return decodedToken;
+    return await jwt.verify(payload, process.env.JWT_SECRET_KEY);
 };
