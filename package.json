@@ -4,7 +4,8 @@
   "description": "finpro-binar-backend",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -28,6 +29,8 @@
     "express-formidable": "^1.2.0",
     "jsonwebtoken": "^8.5.1",
     "nodemon": "^2.0.16",
+    "pg": "^8.7.3",
+    "pg-hstore": "^2.3.4",
     "sequelize": "^6.20.1",
     "sequelize-cli": "^6.4.1"
   }
