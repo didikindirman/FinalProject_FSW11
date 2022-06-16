@@ -1,5 +1,6 @@
 const bcrypt = require('bcrypt');
 const userRepository = require('../repositories/user.repository.js');
+const randomNumber = require('../util/randomNumber.js');
 
 exports.login = async (data) => {
     const user = await userRepository.findByEmail(data.email);
@@ -25,33 +26,30 @@ exports.login = async (data) => {
   };
 
 exports.register = async (payload) => {
+    const email = await userRepository.findByEmail(payload.email);
+    let result = { httpCode: null, message: null, result: false, data: null };
+    if (email) {
+        (result.httpCode = 403),
+          (result.message = `User ${payload.email} exist`);
+        return result;
+      }
+
     const salt = await bcrypt.genSalt(10);
-    const encryptedPassword = await bcrypt.hash(payload.fields.password, salt);
+    const encryptedPassword = await bcrypt.hash(payload.password, salt);
 
+    const uniqueId = Math.floor(Math.random() * 100) + Number(Date.now());
     const user = {
-        email: payload.fields.email,
+        email: payload.email,
         password: encryptedPassword,
-        role: payload.fields.role
+        role: payload.role,
+        id_user: uniqueId
     };
-    
-    return await userRepository.save(user);
-    
-};
 
-exports.signInUser = async (payload) => {
-    const user = await userRepository.findByEmail(payload.fields.email);
+    const addUser = await userRepository.save(user);
 
-    if (user != null) {
-        const checkPassword = await bcrypt.compare(
-            payload.fields.password, user.password
-        );
-
-        if (checkPassword) {
-            return user;
-        } else {
-            return null;
-        }
-    } else {
-        return null;
-    }
+    result.httpCode = 200;
+    result.message = "Register Succesfully";
+    result.result = true;
+    result.data = addUser;
+    return result;
 };

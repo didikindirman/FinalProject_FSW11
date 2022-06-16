@@ -2,16 +2,20 @@ const userService = require('../services/user.service.js');
 const jwt = require("../util/jwt.util.js")
 
 exports.register = async (request, response) => {
-    const user = await userService.register(request);
+    const user = await userService.register(request.fields);
 
-    response.status(201).json({ data: user });
+    return response.status(user.httpCode).json({
+      httpCode: user.httpCode,
+      message: user.message,
+      data: user.data
+    });
 }
 
-exports.login = async (req, res) => {
-    const user = await userService.login(req.fields);
+exports.login = async (request, response) => {
+    const user = await userService.login(request.fields);
   
     if (!user.result)
-      return res
+      return response
         .status(user.httpCode)
         .json({ httpCode: user.httpCode, message: user.message });
   
@@ -20,7 +24,7 @@ exports.login = async (req, res) => {
       role: user.data.role,
     });
   
-    return res.status(user.httpCode).json({
+    return response.status(user.httpCode).json({
       httpCode: user.httpCode,
       message: user.message,
       token: token,
