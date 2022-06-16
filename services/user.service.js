@@ -24,18 +24,14 @@ exports.login = async (data) => {
     return result;
   };
 
-exports.createUser = async (payload) => {
+exports.register = async (payload) => {
     const salt = await bcrypt.genSalt(10);
     const encryptedPassword = await bcrypt.hash(payload.fields.password, salt);
 
     const user = {
-        id_user: payload.fields.id_user,
-        role: payload.fields.role,
-        name: payload.fields.name,
         email: payload.fields.email,
         password: encryptedPassword,
-        address: payload.fields.address,
-        phone: payload.fields.phone
+        role: payload.fields.role
     };
     
     return await userRepository.save(user);

@@ -11,6 +11,7 @@ app.use(formidable());
 
 // Auth Routes
 app.post('/login', userController.login)
+app.post('/register', userController.register);
 
 // User Routes
 

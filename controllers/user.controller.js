@@ -1,8 +1,8 @@
 const userService = require('../services/user.service.js');
 const jwt = require("../util/jwt.util.js")
 
-exports.createNewUserApi = async (request, response) => {
-    const user = await userService.createUser(request);
+exports.register = async (request, response) => {
+    const user = await userService.register(request);
 
     response.status(201).json({ data: user });
 }
@@ -26,3 +26,5 @@ exports.login = async (req, res) => {
       token: token,
     });
   };
+
+  
