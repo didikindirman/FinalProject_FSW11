@@ -12,6 +12,9 @@ app.use(formidable());
 // Auth Routes
 app.post('/login', userController.login)
 app.post('/register', userController.register);
+app.get('/', (req, res) => { res.json({message: 'Index running'}) } );
+
+
 
 // User Routes
 
